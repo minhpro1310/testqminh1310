@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+ <html lang="vi">
+ <head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Đây là trang web test</title>
+     <link rel="stylesheet" href="style.css">
+     <script>
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@100&display=swap" rel="stylesheet">
+     </script>
+     <script>
+         const hieu_ung_danh_chu = function(the_html_chua_chu, chu, thoiGianDoi) {
+    this.the_html_chua_chu = the_html_chua_chu;
+    this.chu = chu;
+    this.tu = '';
+    this.vi_tri_index_chu = 0;
+    this.thoiGianDoi = parseInt(thoiGianDoi, 10);
+    this.ham_danh_chu();
+    this.dang_xoa_chu = false;
+}
+
+
+hieu_ung_danh_chu.prototype.ham_danh_chu = function() {
+    
+    // Vị Trí chỉ mục của từ hiện tại
+    const index_chu_hien_tai = this.vi_tri_index_chu % this.chu.length;
+    //Lấy tất cả cả từ của chữ hiện tại
+    const chu_hien_tai = this.chu[index_chu_hien_tai]
+
+    
+    if(this.dang_xoa_chu) {
+        //Xóa từ
+        this.tu = chu_hien_tai.substring(0, this.tu.length - 1)
+    } else {
+        //Thêm từ
+        this.tu = chu_hien_tai.substring(0, this.tu.length + 1)
+    }
+
+    // Thêm từ vào đối tượng
+    this.the_html_chua_chu.innerHTML = `<span class="tu">${this.tu}</span>`
+
+    //Tốc độ chữ
+    let toc_do_danh_chu = 100;
+    if(this.dang_xoa_chu) {
+        toc_do_danh_chu = toc_do_danh_chu /2
+    }
+
+    //Nếu từ hoàn thành
+    if(!this.dang_xoa_chu && this.tu === chu_hien_tai) {
+        //Tạo thời điểm ngừng ở cuối
+        toc_do_danh_chu = this.thoiGianDoi;
+        console.log(this.thoiGianDoi)
+        //Thiết lập xóa chữ đúng
+        this.dang_xoa_chu = true;
+    } else if (this.dang_xoa_chu && this.tu === ''){
+        this.dang_xoa_chu = false;
+        //Move to từ tiếp theo
+        this.vi_tri_index_chu++;
+        //Dừng trước khi đánh chữ
+        toc_do_danh_chu = 300
+    }
+
+    setTimeout(() => this.ham_danh_chu(), toc_do_danh_chu)
+}
+
+document.addEventListener('DOMContentLoaded', chay_ham);
+
+function chay_ham() {
+    const the_html_chua_chu = document.querySelector('.danh_chu');
+    const chu = JSON.parse(the_html_chua_chu.getAttribute('data-chu'));
+    const thoiGianDoi = the_html_chua_chu.getAttribute('data-thoiGianDoi');
+
+    //Thiết Lập hàm hieu_ung _danh_chu
+    new hieu_ung_danh_chu(the_html_chua_chu, chu, thoiGianDoi)
+}
+
+     </script>
+ </head>
+ <body>
+     <div class="hieu_ung_chu">
+         <h1><span class="danh_chu" data-thoiGianDoi="1500" data-chu='["404 File Not Found", "Có cái gì đâu mà vào 🗿", "Làm người yêu tớ nha :3 ❤"]'></span></h1>
+         <h2>v1.4_BETA_Build000</h2>
+     </div>
+    <script src="hieu_ung_chu.js"></script>
+ </body>
+ <style>
+ body{
+     height: 100vh;
+     background: #000 url('hinh_anh.jpg') no-repeat center center / cover;
+     color:#fff;
+     overflow: hidden;
+     font-family: 'Roboto Mono', monospace;
+ }
+.hieu_ung_chu {
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+     height: 100%;
+     padding: 0 3rem;
+ }
+h1, h2{
+     font-weight: 200;
+     margin: 0.4rem;
+ }
+h1{
+     font-size: 3.5rem;
+ }
+h2{
+     font-size:2rem;
+ }
+.tu {
+    border-right: 0.2rem solid #ccc; 
+ }
+@media(min-width: 1200px) {
+     h1{
+         font-size: 5rem;
+     }
+ }
+@media(max-width: 800px){
+     .hieu_ung_chu{
+         padding: 0 1rem;
+     }
+    h1{
+         font-size: 3rem;
+     }
+ }
+@media(max-width:500px) {
+     h1 {
+         font-size: 2.5rem;
+     }
+    h2{
+         font-size: 1.5rem;
+     }
+ }
+ </style>
+ </html>
