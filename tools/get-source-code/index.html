@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.2">
+    <title>Get web source</title>
+</head>
+<body>
+    <h1>Get web source by <a href="https://ndqm.tk/">ndqm</a></h1>
+    <input type="text" id="inputlink" placeholder="only web link no http inclube"/>
+    <button onclick="sub()" type="submit">Get source</button>
+    <h2>Result:</h2>
+    <p id="rs">view-source:http://</p>
+    <p>v1.0_test-only</p>
+    <style>
+        body{
+            text-align: center;
+            text-decoration: none;
+        }
+    </style>
+    <script>
+        function sub(){
+            var url = document.getElementById('inputlink').value;
+            document.getElementById('rs').innerHTML = "view-source:http://"+url;
+        }
+    </script>
+</body>
+</html>
