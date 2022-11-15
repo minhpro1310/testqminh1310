@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to ARGUS</title>
+    <link rel="stylesheet" type="text/css" href="./argus/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;600&display=swap" rel="stylesheet">
+    <script>
+        setInterval(change1, 1000);
+        setInterval(change2, 2001);
+        setInterval(change3, 3001);
+        setInterval(change4, 4001);
+        setInterval(change5, 5001);
+        setInterval(change6, 6001);
+
+        function change1() {
+            document.getElementById('author').style.color = 'red';
+        }
+
+        function change2() {
+            document.getElementById('author').style.color = 'blue';
+        }
+
+        function change3() {
+            document.getElementById('author').style.color = 'yellow';
+        }
+
+        function change4() {
+            document.getElementById('author').style.color = 'aqua';
+        }
+
+        function change5() {
+            document.getElementById('author').style.color = 'pink';
+        }
+
+        function change6() {
+            document.getElementById('author').style.color = 'green';
+        }
+
+        function gotowebsite() {
+            document.location = 'https://ndqm.eu.org';
+        }
+    </script>
+  <style>
+    body {
+    background-image: url('https://images7.alphacoders.com/122/1228014.png');
+    font-size: 20px;
+    color: white;
+    font-family: "Montserrat";
+    position: absolute;
+    left: 50%;
+    top: 42%;
+    transform: translateX(-50%) translateY(-50%);
+    text-align: center;
+    width: 100%;
+    text-decoration: none;
+}
+  </style>
+</head>
+
+<body style="text-align:center;" id="contentloader">
+    <h1>
+        ARGUS SYSTEM LLC | VietNam Corp.
+    </h1>
+    <p>
+        All websites belonging to <span style="color: red;">ARGUS LLC</span>'s system are undergoing server maintenance and upgrading<br> ERROR_CODE: 0098
+    </p>
+    <p>
+    </p>
+    <p>Powered by APACHE Webserver</p>
+    <p>Made with &lt;3 by <span id="author"><a onclick="gotowebsite()">ndqm</a></span></p>
+</body>
+
+</html>
